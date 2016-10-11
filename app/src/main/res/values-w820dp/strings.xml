@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">uMenu</string>
+    <string name="feedBackTitle">Please fill out this form so we can improve our service to you</string>
+    <string name="feedBackGood">Good</string>
+    <string name="feedBackOK">Ok</string>
+    <string name="feedBackWork">Improvement</string>
+    <string name="feedBackService">Service</string>
+    <string name="feedBackFood">Food</string>
+    <string name="feedBackValue">Value</string>
+    <string name="feedBackMenu">Menu</string>
+
+</resources>

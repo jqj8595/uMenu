@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context = ".MainActivity">
+
+
+    <item android:id = "@+id/Restaurants"
+        android:title= "@string/title_restaurant_list"
+        android:onClick = "onOptionsItemSelected"
+        android:icon = "@drawable/umenu_logo_image_1"
+        android:height ="40sp"
+
+       />
+    <item android:id = "@+id/NearBy"
+        android:title = "@string/nearby"
+        android:onClick = "onOptionsItemSelected"
+        android:icon="@drawable/map_marker_icon"
+
+
+
+    />
+    <item android:id = "@+id/Reviews"
+        android:title = "@string/commentBox"
+        android:onClick = "onOptionsItemSelected"
+        android:icon = "@drawable/thumbupicon"
+
+        />
+
+    <item android:id = "@+id/OrderNow"
+        android:title = "@string/Ordernow"
+        android:onClick = "onOptionsItemSelected"
+        android:icon = "@drawable/notepad_icon"
+        />
+    <item android:id = "@+id/DinnerPlaces"
+        android:title = "@string/Dinner"
+        android:onClick = "onOptionsItemSelected"
+        android:icon = "@drawable/dineinicon_1"
+
+        />
+    <item android:id = "@+id/LunchPlaces"
+        android:title = "@string/Lunch"
+        android:onClick = "onOptionsItemSelected"
+        android:icon="@drawable/takeout_icon_1"
+
+        />
+    <item android:id = "@+id/BreakfastPlaces"
+        android:title = "@string/Breakfast"
+        android:onClick = "onOptionsItemSelected"
+        android:icon = "@drawable/wine_icon"
+
+        />
+
+
+
+
+
+
+
+
+
+
+</menu>

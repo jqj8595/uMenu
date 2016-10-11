@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingTop="5pt"
+    android:paddingLeft="5pt"
+    android:paddingRight="5pt"
+    tools:context="com.umenu.umenu.Feedback">
+
+    <TextView
+        style="@style/activitySummary"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/feedBackTitle"
+        android:id="@+id/textViewTitle"/>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="5dp">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dp"
+            android:layout_gravity="center_horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5pt"
+                android:text=""
+                android:id="@+id/textViewChoiceOption" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5pt"
+                android:gravity="center_horizontal"
+                android:text="@string/feedBackGood"
+                android:id="@+id/textViewChoiceGood" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5pt"
+                android:gravity="center_horizontal"
+                android:text="@string/feedBackOK"
+                android:id="@+id/textViewChoiceOk"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/feedBackWork"
+                android:id="@+id/textViewChoiceBad"
+                />
+
+        </TableRow>
+
+        <!-- Service Check Boxes -->
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingRight="10pt"
+                android:text="@string/feedBackService"
+                android:id="@+id/textViewService"
+                />
+            <CheckBox android:id="@+id/checkbox_serviceGood"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingRight="5pt"
+                android:onClick="onCheckboxClicked"/>
+
+            <CheckBox android:id="@+id/checkbox_serviceOk"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingRight="5pt"
+                android:onClick="onCheckboxClicked"/>
+
+            <CheckBox android:id="@+id/checkbox_serviceBad"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingRight="5pt"
+                android:onClick="onCheckboxClicked"/>
+
+        </TableRow>
+
+        <!-- Food Check Boxes -->
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="2dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingRight="10pt"
+                android:text="@string/feedBackFood"
+                android:id="@+id/textViewFood" />
+
+            <CheckBox android:id="@+id/checkbox_foodGood"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingRight="5pt"
+                android:onClick="onCheckboxClicked"/>
+
+            <CheckBox android:id="@+id/checkbox_foodOk"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingRight="5pt"
+                android:onClick="onCheckboxClicked"/>
+
+            <CheckBox android:id="@+id/checkbox_foodBad"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingRight="5pt"
+                android:onClick="onCheckboxClicked"/>
+
+        </TableRow>
+
+        <!-- Value Check Boxes -->
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="2dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingRight="10pt"
+                android:text="@string/feedBackValue"
+                android:id="@+id/textViewValue" />
+
+            <CheckBox android:id="@+id/checkbox_valueGood"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingRight="5pt"
+                android:onClick="onCheckboxClicked"/>
+
+            <CheckBox android:id="@+id/checkbox_valueOk"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingRight="5pt"
+                android:onClick="onCheckboxClicked"/>
+
+            <CheckBox android:id="@+id/checkbox_valueBad"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingRight="5pt"
+                android:onClick="onCheckboxClicked"/>
+
+        </TableRow>
+
+        <!-- uMenu Check Boxes -->
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="2dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingRight="10pt"
+                android:text="@string/feedBackMenu"
+                android:id="@+id/textViewApp" />
+
+            <CheckBox android:id="@+id/checkbox_appGood"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingRight="5pt"
+                android:onClick="onCheckboxClicked"/>
+
+            <CheckBox android:id="@+id/checkbox_appOk"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingRight="5pt"
+                android:onClick="onCheckboxClicked"/>
+
+            <CheckBox android:id="@+id/checkbox_appBad"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingRight="5pt"
+                android:onClick="onCheckboxClicked"/>
+
+        </TableRow>
+
+    </TableLayout>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:paddingTop="2pt"
+        android:text="Please enter further comments bellow"
+        android:id="@+id/textViewCommentTitle" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:paddingBottom="2pt"
+        android:text="250 characters remaining"
+        android:id="@+id/textViewCharactersLeft" />
+    <EditText
+        android:id="@+id/userCommentBox"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:maxLength="250"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/doneButton"
+        android:text="Done"/>
+
+
+</LinearLayout>

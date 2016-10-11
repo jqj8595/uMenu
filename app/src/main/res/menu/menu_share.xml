@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context = ".MainActivity">
+
+    <item android:id = "@+id/Facebook"
+        android:title= "@string/Facebook"
+        android:onClick = "onOptionsItemSelected"
+        android:icon = "@drawable/social_facebook_con"
+        />
+    <item android:id = "@+id/Gmail"
+        android:title = "@string/Gmail"
+        android:onClick = "onOptionsItemSelected"
+        android:icon = "@drawable/social_google_plus_icon"
+        />
+    <item android:id = "@+id/Twitter"
+        android:title = "@string/Twitter"
+        android:onClick = "onOptionsItemSelected"
+        android:icon = "@drawable/social_twitter_icon"
+        />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</menu>

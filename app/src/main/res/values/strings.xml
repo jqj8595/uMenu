@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">uMenu</string>
+    <string name="btnMenu">uMenu</string>>
+    <string name="app_name1">hello</string>
+    <string name="searchbutton">SearchButton</string>
+    <string name="share">share</string>
+    <string name="Welcome">Welcome</string>
+    <string name="HomeImage">HomeImage</string>
+    <string name="settings">Settings</string>
+    <string name="Location">Location services</string>
+    <string name="mod_pass">Change Password</string>
+    <string name="mod_username">Change Username</string>
+    <string name="predefined_username">Name</string>
+    <string name="title_activity_u_menu_maps">Map</string>
+    <string name="title_menu_list">Restaurants</string>
+    <string name="title_menu_detail">Menu Detail</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <string name="title_restaurant_list">Restaurants</string>
+    <string name="title_restaurant_detail">Restaurant Detail</string>
+    <string name="nearby">Near By</string>
+    <string name="commentBox">Reviews</string>
+    <string name="Ordernow">Order Now</string>
+    <string name="Dinner">Dine in</string>
+    <string name="Lunch">Take out</string>
+    <string name="Breakfast">Bars</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="Facebook">Facebook</string>
+    <string name="Twitter">Twitter</string>
+    <string name="Gmail">Gmail</string>
+
+    <string name="feedBackTitle">Please fill out this form so we can improve our service to you</string>
+    <string name="feedBackGood">Good</string>
+    <string name="feedBackOK">Ok</string>
+    <string name="feedBackWork">Improvement</string>
+    <string name="feedBackService">Service</string>
+    <string name="feedBackFood">Food</string>
+    <string name="feedBackValue">Value</string>
+    <string name="feedBackMenu">Menu</string>
+
+    <string name="txtUserName">Username</string>
+    <string name="txtPassword">Password</string>
+    <string name="inputUserName">eg.JohnSmith</string>
+    <string name="inputPassword">eg.John123</string>
+    <string name="btnLogin">Login</string>
+    <string name="btnSignup">Signup</string>
+
+    //strings for Register.xml -> Register form
+    <string name="registerFormTitle">Create your uMenu account</string>
+    <string name="txtFirstName">First Name</string>
+    <string name="txtLastName">Last Name</string>
+    <string name="txtInputFirstName">eg.John</string>
+    <string name="txtInputLastName">eg.Smith</string>
+
+
+    <string name="txtEmail">Email</string>
+    <string name="txtInputEmail">eg.johnSmith@gmail.com</string>
+    <string name="txtPass">Password</string>
+    <string name="inputTxtPass">eg.password123</string>
+    <string name="txtConfirmPass">Confirm Password</string>>
+    <string name="btnDone">Done </string>
+
+    //homepage
+
+    <string name="txtWelcome">Welcome to uMenu</string>
+
+
+</resources>
