@@ -48,7 +48,8 @@
             android:label="@string/title_activity_maps" />
         <activity android:name=".Feedback" />
         <activity android:name=".Signup" />
-        <activity android:name=".Homepage"></activity>
+        <activity android:name=".Homepage" />
+        <activity android:name=".Testinggithub" />
     </application>
 
 </manifest>
