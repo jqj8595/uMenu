@@ -1,11 +1,9 @@
 package com.umenu.umenu;
 
 import android.content.Intent;
-import android.graphics.Typeface;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.TextView;
 
 public class UMENU_logo extends AppCompatActivity {
     public static int timeout = 4000;
@@ -18,20 +16,20 @@ public class UMENU_logo extends AppCompatActivity {
 
 
 
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                Intent homeintent = new Intent(UMENU_logo.this, MainActivity.class);
-//
-//                startActivity(homeintent);
-//                UmenuLogo = true;
-//                finish();
-//
-//
-//
-//
-//            }
-//        }, timeout);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent homeintent = new Intent(UMENU_logo.this, MainActivity.class);
+
+                startActivity(homeintent);
+                UmenuLogo = true;
+                finish();
+
+
+
+
+            }
+        }, timeout);
 
 
 
