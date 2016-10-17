@@ -4,30 +4,20 @@ package com.umenu.umenu;
  * Created by nishanjayetileke on 11/10/16.
  */
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Typeface;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.view.ViewPropertyAnimatorCompatSet;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.view.Menu;
 import android.widget.PopupMenu;
-import android.widget.PopupMenu.OnMenuItemClickListener;
-
-
-
 import android.widget.Toast;
-
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.Scanner;
 
 public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
 
@@ -56,11 +46,22 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
         ImageButton share;
 
 
+
+
+
         //connecting the buttons with the xml id created with each button
         menu =  (Button)findViewById(R.id.btnMenu);
         setting = (ImageButton)findViewById(R.id.settings);
         share = (ImageButton) findViewById(R.id.share);
         menu.setTransformationMethod(null);
+
+
+
+
+
+
+
+
 
         //following method calls are for
         share.setOnClickListener(new View.OnClickListener(){

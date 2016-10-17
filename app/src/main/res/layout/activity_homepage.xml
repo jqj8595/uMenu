@@ -23,11 +23,6 @@
     android:layout_alignParentTop="true"
     android:layout_alignParentLeft="true" />
 
-
-
-
-
-
 <Button
     android:id="@+id/btnMenu"
     android:layout_width="wrap_content"
@@ -59,7 +54,6 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:contentDescription="@string/settings"
-
     android:src="@android:drawable/ic_menu_preferences"
     android:layout_alignParentBottom="true"
     android:layout_toRightOf="@+id/share" />
@@ -69,8 +63,52 @@
     android:layout_height="wrap_content"
     android:id="@+id/searchView2"
     android:layout_below="@+id/Welcome_message"
-    android:layout_alignParentRight="true"
-    android:layout_marginTop="60dp" />
+    android:layout_alignParentLeft="true"
+    android:layout_marginTop="73dp"
+    android:layout_alignRight="@+id/btnMenu" />
+
+    <ViewFlipper
+        android:id="@+id/viewflipper"
+        android:layout_width="200pt"
+        android:layout_height="200pt"
+        android:autoStart="true"
+        android:flipInterval="4000"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/btnMenu"
+        android:visibility="visible"
+        android:touchscreenBlocksFocus="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/demofive"
+            android:adjustViewBounds="false" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/demoone" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/demotwo" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/demothree"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/demofour" />
+
+
+    </ViewFlipper>
 
 
 </RelativeLayout>
