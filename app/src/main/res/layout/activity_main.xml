@@ -8,8 +8,9 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.umenu.umenu.MainActivity"
-    android:background="@color/common_google_signin_btn_text_dark_default"
-    android:backgroundTint="#fefefe"
+    android:background="#750101"
+    android:backgroundTint="#770606"
+    android:backgroundTintMode="multiply"
     android:id="@+id/vbtg67">
 
 
@@ -20,7 +21,7 @@
         android:text="@string/txtUserName"
         android:width="180dp"
         android:textSize="20dp"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
@@ -40,11 +41,10 @@
         android:width="180dp"
         android:textSize="20dp"
         android:layout_marginTop="10dp"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:text="@string/txtPassword"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/inputUserName"
-        />
+        android:layout_below="@+id/inputUserName" />
     <EditText
         android:id="@+id/inputPassword"
         android:layout_width="wrap_content"
