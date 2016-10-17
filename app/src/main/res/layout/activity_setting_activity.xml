@@ -7,7 +7,11 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.umenu.umenu.Setting_activity">
+    tools:context="com.umenu.umenu.Setting_activity"
+    android:background="#750101"
+    android:backgroundTint="#770606"
+    android:backgroundTintMode="multiply"
+>
 
     <TextView
         android:layout_width="wrap_content"

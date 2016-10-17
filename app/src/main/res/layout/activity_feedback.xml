@@ -7,7 +7,11 @@
     android:paddingTop="5pt"
     android:paddingLeft="5pt"
     android:paddingRight="5pt"
-    tools:context="com.umenu.umenu.Feedback">
+    tools:context="com.umenu.umenu.Feedback"
+    android:background="#750101"
+    android:backgroundTint="#770606"
+    android:backgroundTintMode="multiply"
+    >
 
     <TextView
         style="@style/activitySummary"
