@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="lightBlue">#68A6F5</color>
+    <!-- Colour for the background across all activities -->
+    <color name="background">#460d0d</color>
 </resources>

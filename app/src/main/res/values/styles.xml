@@ -10,6 +10,17 @@
 
     </style>
 
+    <!-- This is the theme that we should be currently using as of 18/10/2016
+         It was changed from Theme.AppCompat.NoActionBar to use this theme from
+         style as a custom version. Change this theme to universally change activity
+         elements like background colour etc
+    -->
+    <style name="jasonsTheme" parent="Theme.AppCompat.NoActionBar">
+
+        <item name="android:windowBackground">@color/background</item>
+
+    </style>
+
     <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
@@ -20,4 +31,7 @@
         <item name="android:textSize">25sp</item>
     </style>
 
+    <style name="activitySummary">
+        <item name="android:textSize">20sp</item>
+    </style>
 </resources>
