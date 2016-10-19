@@ -38,6 +38,11 @@ public class Signup extends AppCompatActivity {
                 pass.show();
             }
             else{
+                //Creating singleton class to hold food menu data. Also could instantiate singleton
+                // to hold data for user as well since all details have been entered
+                // - Jason
+
+
                 Intent iDone = new Intent(Signup.this,Homepage.class);
                 startActivity(iDone);
             }

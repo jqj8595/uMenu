@@ -58,7 +58,11 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".MenuMain"></activity>
+        <activity android:name=".MenuPackage.MenuMain" />
+        <activity android:name=".MenuPackage.MenuBreakfast" />
+        <activity android:name=".MenuPackage.MenuLunch" />
+        <activity android:name=".MenuPackage.MenuDinner" />
+        <activity android:name=".MenuPackage.MenuDrinks"></activity>
     </application>
 
 </manifest>

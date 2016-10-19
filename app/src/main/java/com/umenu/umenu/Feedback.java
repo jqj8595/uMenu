@@ -49,11 +49,13 @@ public class Feedback extends AppCompatActivity {
         //Lock screen orientation to portrait. Its a menu ya dont read it side on
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
+
     public void onCheckboxClicked(View view) {
         boolean checked = ((CheckBox) view).isChecked();
         arrangeCheckBoxes(view);
 
     }
+
     private class commentCharactersLeft implements TextWatcher {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -68,6 +70,7 @@ public class Feedback extends AppCompatActivity {
         public void afterTextChanged(Editable s) {
         }
     }
+
     /**
      * Email for testing
      * email address: softwareproject@yandex.com
@@ -78,6 +81,7 @@ public class Feedback extends AppCompatActivity {
     private void sendEmail() {
 
     }
+
     /*
     private void saveToDevice(){
         String text ="\n";
@@ -133,6 +137,7 @@ public class Feedback extends AppCompatActivity {
             sendEmail();
         }
     };
+
     private void arrangeCheckBoxes(View compare) {
         if (compare.getId() == service1.getId() || compare.getId() == service2.getId() || compare.getId() == service3.getId()) {
             service1.setChecked(false);

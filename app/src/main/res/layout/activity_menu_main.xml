@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.umenu.umenu.MenuMain"
+    tools:context="com.umenu.umenu.MenuPackage.MenuMain"
     android:clickable="true">
 
     <!-- Some textViews here use styles to control their size and color-->
@@ -40,7 +40,8 @@
         android:layout_below="@+id/menuMainSubtitle"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="45dp"
-        android:id="@+id/menuMainChoiceBreakfast" />
+        android:id="@+id/menuMainChoiceBreakfast"
+        android:clickable="true" />
 
     <TextView
         android:text="Lunch Menu"
@@ -60,6 +61,17 @@
         android:layout_below="@+id/menuMainChoiceLunch"
         android:layout_marginTop="46dp"
         android:id="@+id/menuMainChoiceDinner"
+        android:clickable="true" />
+
+    <TextView
+        android:text="Drinks Menu"
+        style="@style/menuMainChoices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menuMainChoiceDinner"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="43dp"
+        android:id="@+id/menuMainChoiceDrinks"
         android:clickable="true" />
 
 </RelativeLayout>
