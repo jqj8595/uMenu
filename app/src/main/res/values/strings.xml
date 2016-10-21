@@ -65,4 +65,10 @@
     <string name="txtWelcome">Welcome to uMenu</string>
 
 
+
+    //facebook
+
+    <string name="facebook_app_id">1584903135149355</string>
+
+
 </resources>
