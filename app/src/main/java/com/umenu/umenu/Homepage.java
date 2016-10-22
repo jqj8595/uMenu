@@ -73,8 +73,6 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
     int REQUEST_CAMERA =0, SELECT_FILE =1;
 
 
-
-
     //main running method that is automatically calls during runtime of the application
     @Override
     synchronized protected void onCreate(Bundle savedInstanceState) {
@@ -82,8 +80,9 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
         facebookSDKInitialize();
         setContentView(R.layout.activity_homepage);
         Intent intent = getIntent();
+        callbackManager = CallbackManager.Factory.create();
         String jsondata = intent.getStringExtra("jsondata");
-        shareDialog = new ShareDialog(this);
+
 
 
 
@@ -162,8 +161,6 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
      */
     private void facebookSDKInitialize() {
         FacebookSdk.sdkInitialize(getApplicationContext());
-        callbackManager = CallbackManager.Factory.create();
-
     }
 
 
@@ -397,7 +394,9 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
 
             case R.id.Facebook:
                 result = true;
+                shareDialog = new ShareDialog(this);
                 selectImage();
+
 
 
                 break;
@@ -582,5 +581,8 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
         AppIndex.AppIndexApi.end(client, getIndexApiAction());
         client.disconnect();
     }
+
+
+
 
 }
