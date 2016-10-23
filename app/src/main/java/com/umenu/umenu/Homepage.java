@@ -1,5 +1,6 @@
 package com.umenu.umenu;
 
+
 /**
  * Created by nishanjayetileke on 11/10/16.
  */
@@ -32,6 +33,7 @@ import android.widget.Toast;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
 import com.facebook.share.ShareApi;
+import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.model.SharePhoto;
 import com.facebook.share.model.SharePhotoContent;
 import com.facebook.share.widget.ShareDialog;
@@ -49,8 +51,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-
-
 public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
     //time out for splash screen at the start of the app
@@ -95,10 +95,28 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
         Button menu;
         ImageButton setting;
         ImageButton share;
+        ImageButton fbshare;
+        fbshare = (ImageButton) findViewById(R.id.fbimagebutton);
+        shareDialog = new ShareDialog(this);
 
+        fbshare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                if (ShareDialog.canShow(ShareLinkContent.class)) {
+                    ShareLinkContent linkContent = new ShareLinkContent.Builder()
+                            .setContentTitle("uMenu is awesome Jason, Nishan and Sam should get A+")
+                            .setImageUrl(Uri.parse("https://i.ytimg.com/vi/EYGOf56ux2o/0.jpg?time=1454060557625"))
+                            .setContentDescription(
+                                    "Having a great time at this restaurant")
+                            .setContentUrl(Uri.parse("http://www.delaroystudios.com/channel/android-development/how-to-develop-an-android-camera-and-video-app/#.Vqsd0iorK00"))
+                            .build();
 
+                    shareDialog.show(linkContent);  // Show facebook ShareDialog
+                }
+            }
 
+        });
 
 
 
@@ -206,7 +224,6 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
                     intent.setType("image/*");
                     startActivityForResult(
                             Intent.createChooser(intent, "Select File"), SELECT_FILE);
-
                 }
                 else if(items[item].equals("Cancel")){
                     dialog.dismiss();;
@@ -339,10 +356,8 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
         switch (id) {
 
             case R.id.Restaurants:
-
-                result = true;
                 testing_menuWorks_NewActivity(result);
-
+                result = true;
                 break;
 
             case R.id.NearBy:

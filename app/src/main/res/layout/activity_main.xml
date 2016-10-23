@@ -11,20 +11,51 @@
     android:id="@+id/vbtg67">
 
 
+    <Button
+        android:id="@+id/btnSignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="90dp"
+        android:textSize="15dp"
 
+        android:layout_marginTop="11dp"
+        android:text="@string/btnSignup"
+        android:textAllCaps="false"
+        android:onClick="onButtonClick"
+        android:background="@drawable/shape"
+        android:backgroundTintMode="screen"
+        android:layout_below="@+id/btnLogin"
+        android:layout_alignStart="@+id/btnLogin" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="90dp"
+        android:textSize="15dp"
+        android:text="@string/btnLogin"
+        android:background="@drawable/shape"
+        android:textAllCaps="false"
+        android:onClick="onButtonClick"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/inputPassword" />
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:layout_below="@+id/btnSignup"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="49dp"
-        android:layout_marginTop="172dp" />
+        android:layout_toEndOf="@+id/btnSignup" />
 
-
-
-
+    <EditText
+        android:id="@+id/inputPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="180dp"
+        android:hint="@string/inputPassword"
+        android:layout_above="@+id/btnLogin"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/txtUserName"
@@ -35,70 +66,27 @@
         android:textSize="20dp"
         android:textColor="#ffffff"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
-        />
-    <EditText android:id="@+id/inputUserName"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:width="180dp"
-        android:hint="@string/inputUserName"
-        android:layout_below="@+id/txtUserName"
-        android:layout_centerHorizontal="true"
-        />
+        android:layout_above="@+id/inputUserName"
+        android:layout_alignStart="@+id/txtPassword" />
+
     <TextView
         android:id="@+id/txtPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:width="180dp"
         android:textSize="20dp"
-        android:layout_marginTop="10dp"
         android:textColor="#ffffff"
         android:text="@string/txtPassword"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/inputUserName" />
-    <EditText
-        android:id="@+id/inputPassword"
-        android:layout_width="wrap_content"
+        android:layout_above="@+id/inputPassword"
+        android:layout_alignStart="@+id/inputPassword" />
+
+    <EditText android:id="@+id/inputUserName"
         android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
         android:width="180dp"
-        android:hint="@string/inputPassword"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/txtPassword"
-        />
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:width="90dp"
-        android:textSize="15dp"
-        android:layout_marginTop="5dp"
-        android:text="@string/btnLogin"
-        android:background="@drawable/shape"
-        android:textAllCaps="false"
-        android:layout_below="@+id/inputPassword"
-        android:layout_alignParentLeft="@+id/inputPassword"
-        android:layout_alignLeft="@+id/inputPassword"
-        android:onClick="onButtonClick"
-        />
-
-    <Button
-        android:id="@+id/btnSignup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:width="90dp"
-        android:textSize="15dp"
-        android:layout_marginTop="5dp"
-        android:text="@string/btnSignup"
-        android:textAllCaps="false"
-        android:layout_below="@+id/btnLogin"
-        android:layout_alignParentLeft="@+id/btnLogin"
-        android:layout_alignLeft="@+id/btnLogin"
-        android:onClick="onButtonClick"
-        android:textColor="@color/bright_foreground_inverse_material_dark"
-        android:background="#ffffff"
-        android:backgroundTintMode="screen" />
-
+        android:hint="@string/inputUserName"
+        android:layout_above="@+id/txtPassword"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

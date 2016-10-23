@@ -64,14 +64,12 @@
     <string name="txtWelcome">Welcome to uMenu</string>
 
 
-
     //facebook
 
     <string name="facebook_app_id">1584903135149355</string>
 
     <string name="action_settings">action_settings</string>
     <string name="facebook_name">Username</string>
-
 
 
 </resources>
