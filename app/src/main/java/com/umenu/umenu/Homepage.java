@@ -64,33 +64,26 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
-    JSONObject response, profile_pic_data, profile_pic_url;
-    TextView user_name, user_email;
-    ImageView user_picture;
-    NavigationView navigation_view;
-    CallbackManager callbackManager;
-    ShareDialog shareDialog;
-    int REQUEST_CAMERA =0, SELECT_FILE =1;
+    public JSONObject response, profile_pic_data, profile_pic_url;
+    public TextView user_name, user_email;
+    public ImageView user_picture;
+    public NavigationView navigation_view;
+    public CallbackManager callbackManager;
+    public ShareDialog shareDialog;
+    public int REQUEST_CAMERA =0, SELECT_FILE =1;
 
 
     //main running method that is automatically calls during runtime of the application
     @Override
     synchronized protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         facebookSDKInitialize();
         setContentView(R.layout.activity_homepage);
         Intent intent = getIntent();
         callbackManager = CallbackManager.Factory.create();
+
         String jsondata = intent.getStringExtra("jsondata");
-
-
-
-
-
-
-
-
-
 
 
         //test_hashKey(); //made for unit testing function
@@ -100,12 +93,29 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
         Button menu;
         ImageButton setting;
         ImageButton share;
+        TextView textView;
+        MainActivity main = new MainActivity();
+        textView =(TextView)findViewById(R.id.facebooktext);
+        textView.setText(main.get_facebook_name());
+
+
+
+
+
+
+
 
         //connecting the buttons with the xml id created with each button
         menu = (Button) findViewById(R.id.btnMenu);
         setting = (ImageButton) findViewById(R.id.settings);
         share = (ImageButton) findViewById(R.id.share);
         menu.setTransformationMethod(null);
+
+
+
+
+
+
 
         //following method calls are for
         share.setOnClickListener(new View.OnClickListener() {
@@ -154,6 +164,12 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
+
+
+
+
+
+
 
 
     /**
