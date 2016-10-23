@@ -113,10 +113,15 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
                             .build();
 
                     shareDialog.show(linkContent);  // Show facebook ShareDialog
+
+
+
                 }
             }
 
+
         });
+
 
 
 
