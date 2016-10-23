@@ -3,7 +3,6 @@ package com.umenu.umenu;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -17,7 +16,6 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
@@ -27,7 +25,8 @@ import static com.umenu.umenu.R.id.login_button;
 
 public class MainActivity extends AppCompatActivity{
     CallbackManager callbackManager;
-    public String facebook_name ="Unknown User";
+    private String facebook_name ="";
+
 
 
 
@@ -37,9 +36,17 @@ public class MainActivity extends AppCompatActivity{
         facebookSDKInitialize();
         setContentView(R.layout.activity_main);
         callbackManager = CallbackManager.Factory.create();
+
         LoginButton loginButton = (LoginButton) findViewById(login_button);
         loginButton.setReadPermissions("email,publish_actions");//grabs facebook profile permission
         getFacebook_LoginDetails(loginButton); //calls login details
+
+//        Profile profile = Profile.getCurrentProfile();
+//
+//        ProfilePictureView profilePicture = (ProfilePictureView)findViewById(R.id.profile_pic);
+//        profilePicture.setProfileId(profile.getId());
+
+
     }
 
 
@@ -71,42 +78,6 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onSuccess(LoginResult login_result) { //if users login is successful or not
                 getFacebook_UserInfo(login_result);
-
-                GraphRequest request = GraphRequest.newMeRequest(
-                        login_result.getAccessToken(),
-                        new GraphRequest.GraphJSONObjectCallback() {
-                            @Override
-                            public void onCompleted(JSONObject object, GraphResponse response) {
-                                Log.v("LoginActivity", response.toString());
-                                // Application code
-                                try {
-
-                                    facebook_name = object.getString("name");
-
-
-                                    Log.e("JSON:", object.toString());
-
-
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-
-
-
-
-                            }
-
-
-                        });
-
-                Bundle parameters = new Bundle();
-                parameters.putString("fields",
-                        "id,name,link,birthday," +
-                                "first_name,gender,last_name,location,email,picture.type(large)");
-                request.setParameters(parameters);
-                request.executeAsync();
-
             }
 
 
@@ -227,6 +198,12 @@ public class MainActivity extends AppCompatActivity{
     {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+        if (callbackManager.onActivityResult(requestCode, resultCode, data)) {
+            return;
+        }
+
+
+
     }
 
 

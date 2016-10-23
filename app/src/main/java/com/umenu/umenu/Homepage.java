@@ -77,11 +77,13 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
     @Override
     synchronized protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         facebookSDKInitialize();
         setContentView(R.layout.activity_homepage);
         Intent intent = getIntent();
         callbackManager = CallbackManager.Factory.create();
+
+
+
 
         String jsondata = intent.getStringExtra("jsondata");
 
@@ -93,11 +95,6 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
         Button menu;
         ImageButton setting;
         ImageButton share;
-        TextView textView;
-        MainActivity main = new MainActivity();
-        textView =(TextView)findViewById(R.id.facebooktext);
-        textView.setText(main.get_facebook_name());
-
 
 
 
@@ -110,11 +107,6 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
         setting = (ImageButton) findViewById(R.id.settings);
         share = (ImageButton) findViewById(R.id.share);
         menu.setTransformationMethod(null);
-
-
-
-
-
 
 
         //following method calls are for
@@ -163,12 +155,8 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
     }
-
-
-
-
-
 
 
 
@@ -233,8 +221,10 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
 
     @Override
     protected void onActivityResult(final int requestCode, final int resultCode, final Intent data){
+
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+
 
         if(resultCode == Activity.RESULT_OK){
             if(requestCode == SELECT_FILE)
@@ -244,7 +234,14 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
             }
 
         }
+
+
     }
+
+
+
+
+
 
 
     /**

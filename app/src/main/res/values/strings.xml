@@ -61,7 +61,6 @@
     <string name="btnDone">Done </string>
 
     //homepage
-
     <string name="txtWelcome">Welcome to uMenu</string>
 
 
@@ -71,7 +70,7 @@
     <string name="facebook_app_id">1584903135149355</string>
 
     <string name="action_settings">action_settings</string>
-    <string name="facebook_name">facebook_name</string>
+    <string name="facebook_name">Username</string>
 
 
 
