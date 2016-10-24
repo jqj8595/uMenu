@@ -24,9 +24,8 @@ import java.util.List;
 import static com.umenu.umenu.R.id.login_button;
 
 public class MainActivity extends AppCompatActivity{
-    CallbackManager callbackManager;
-    private String facebook_name ="";
-
+    CallbackManager callbackManager; //callback manager for facebooks sdk after intialized
+    private String facebook_name =""; //facebook profile name that is visible to user at homescreen
 
     @Override
    synchronized protected void onCreate(Bundle savedInstanceState) {
@@ -34,19 +33,15 @@ public class MainActivity extends AppCompatActivity{
         facebookSDKInitialize();
         setContentView(R.layout.activity_main);
         callbackManager = CallbackManager.Factory.create();
-
         LoginButton loginButton = (LoginButton) findViewById(login_button);
         loginButton.setReadPermissions("email,publish_actions");//grabs facebook profile permission
         getFacebook_LoginDetails(loginButton); //calls login details
 
 //        Profile profile = Profile.getCurrentProfile();
-//
 //        ProfilePictureView profilePicture = (ProfilePictureView)findViewById(R.id.profile_pic);
 //        profilePicture.setProfileId(profile.getId());
 
-
     }
-
 
     /**
      * initializes facebook sdk and gets the application context for the login feature
@@ -136,8 +131,6 @@ public class MainActivity extends AppCompatActivity{
             startActivity(iSignup);
         }
     }
-
-
 
 
     /**
