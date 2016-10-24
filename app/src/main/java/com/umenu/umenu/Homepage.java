@@ -637,12 +637,6 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
     }
 
 
-    public void dummy(){
-        String s = "";
-
-    }
-
-
 
 
 }
