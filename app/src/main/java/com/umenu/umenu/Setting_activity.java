@@ -72,14 +72,17 @@ public class Setting_activity extends AppCompatActivity {
                 if(check_box ){
                     Toast.makeText(getBaseContext(), "Account is removed successfully",
                             Toast.LENGTH_LONG).show();
+
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             Intent homeintent = new Intent(Setting_activity.this, UMENU_logo.class);
-
-                            startActivity(homeintent);
                             Toast.makeText(getBaseContext(), "One moment please...",
                                     Toast.LENGTH_LONG).show();
+
+                            startActivity(homeintent);
+
+
                             finish();
 
                         }
