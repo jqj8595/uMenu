@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity{
     private String facebook_name ="";
 
 
-
-
     @Override
    synchronized protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,13 +117,8 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-
-
-
-
-
     /**
-     * This log in and sign up buttons are for the restaurants databse, for people not logging
+     * This log in and sign up buttons are for our own databse, for people not logging
      * in using facebook or other social media, and want to create their own user profile using
      * our databse.
      * @param v
@@ -143,6 +136,8 @@ public class MainActivity extends AppCompatActivity{
             startActivity(iSignup);
         }
     }
+
+
 
 
     /**
