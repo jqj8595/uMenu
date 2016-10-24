@@ -72,11 +72,6 @@
 
 
 
-        <activity android:name=".MenuPackage.MenuMain" />
-        <activity android:name=".MenuPackage.MenuBreakfast" />
-        <activity android:name=".MenuPackage.MenuLunch" />
-        <activity android:name=".MenuPackage.MenuDinner" />
-        <activity android:name=".MenuPackage.MenuDrinks"></activity>
         <activity android:name="com.facebook.FacebookActivity"
             android:configChanges=
                 "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
