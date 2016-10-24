@@ -80,9 +80,6 @@ public class MainActivity extends AppCompatActivity{
                 getFacebook_UserInfo(login_result);
             }
 
-
-
-
             @Override
             public void onCancel() { //cancelling process automatically takes you back
 
@@ -100,23 +97,24 @@ public class MainActivity extends AppCompatActivity{
 
 
     public void newConfirm(View view){
-
         EditText et = (EditText)findViewById(R.id.editText);
-
     }
 
 
-
-
+    /**
+     * sets the facebook name from the users profile acts as a setter method
+     * @param name
+     */
     public void set_facebook_name(String name){
-
         this.facebook_name = name;
     }
 
-
+    /**
+     * returns the facebook name initialized, acts as a getter.
+     * @return instance
+     */
     public String get_facebook_name(){
         return this.facebook_name;
-
 
     }
 
@@ -163,7 +161,6 @@ public class MainActivity extends AppCompatActivity{
                             GraphResponse response) {
                         Intent intent = new Intent(MainActivity.this,Homepage.class);
                         intent.putExtra("jsondata",json_object.toString());
-
                         startActivity(intent);
                     }
                 });
@@ -171,17 +168,6 @@ public class MainActivity extends AppCompatActivity{
         permission_param.putString("fields", "id,name,email,picture.width(120).height(120)");
         data_request.setParameters(permission_param);
         data_request.executeAsync();
-
-
-
-
-
-
-
-
-
-
-
 
 
     }
@@ -198,10 +184,6 @@ public class MainActivity extends AppCompatActivity{
     {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
-
-
-
-
 
     }
 
