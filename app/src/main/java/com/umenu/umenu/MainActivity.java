@@ -1,5 +1,6 @@
 package com.umenu.umenu;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,25 +24,99 @@ import java.util.List;
 
 import static com.umenu.umenu.R.id.login_button;
 
-public class MainActivity extends AppCompatActivity{
-    CallbackManager callbackManager; //callback manager for facebooks sdk after intialized
-    private String facebook_name =""; //facebook profile name that is visible to user at homescreen
+public class MainActivity extends AppCompatActivity {
+    EditText etUsername, etPassword;
+    String username,password;
+    LocalDatabase localDatabase;
+
+    CallbackManager callbackManager;
+    private String facebook_name ="";
+    LoginButton loginButton;
+
 
     @Override
    synchronized protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
         facebookSDKInitialize();
         setContentView(R.layout.activity_main);
+
+        etUsername = (EditText) findViewById(R.id.inputUserName);
+        etPassword = (EditText) findViewById(R.id.inputPassword);
+        localDatabase = new LocalDatabase(this);
+
         callbackManager = CallbackManager.Factory.create();
-        LoginButton loginButton = (LoginButton) findViewById(login_button);
+
+        loginButton = (LoginButton) findViewById(login_button);
         loginButton.setReadPermissions("email,publish_actions");//grabs facebook profile permission
         getFacebook_LoginDetails(loginButton); //calls login details
 
+    }
+
 //        Profile profile = Profile.getCurrentProfile();
+//
 //        ProfilePictureView profilePicture = (ProfilePictureView)findViewById(R.id.profile_pic);
 //        profilePicture.setProfileId(profile.getId());
 
+
+
+
+        /**
+         * This log in and sign up buttons are for our own databse, for people not logging
+         * in using facebook or other social media, and want to create their own user profile using
+         * our databse.
+         * @param v
+         */
+
+
+    public void onSignupClick(View v)
+    {
+        Intent intent = new Intent(MainActivity.this,Register.class);
+        startActivity(intent);
+
     }
+
+    public void onLoginClick(View view)
+    {
+             username = etUsername.getText().toString();
+             password = etPassword.getText().toString();
+            Contact contact = new Contact(username,password);
+            authenticate(contact);
+    }
+
+    private  void authenticate(Contact contact)
+    {
+        ServerRequests serverRequests = new ServerRequests(this);
+        serverRequests.fetchDataInBackground(contact, new GetUserCallback() {
+            @Override
+            public void done(Contact returnedContact) {
+
+
+                if(returnedContact == null)
+                {
+                    //show an error message
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setMessage("Username & Password don't match");
+                    builder.setPositiveButton("OK" , null);
+                    builder.show();
+
+                }
+                else{
+                    //Log user in
+                    localDatabase.storeData(returnedContact);
+                    localDatabase.setUserLoggedIn(true);
+                    Intent intent = new Intent(MainActivity.this,Homepage.class);
+                    intent.putExtra("Username",username);
+                    startActivity(intent);
+
+
+                }
+            }
+        });
+    }
+
 
     /**
      * initializes facebook sdk and gets the application context for the login feature
@@ -112,26 +187,6 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-    /**
-     * This log in and sign up buttons are for our own databse, for people not logging
-     * in using facebook or other social media, and want to create their own user profile using
-     * our databse.
-     * @param v
-     */
-    public void onButtonClick(View v)
-    {
-        if(v.getId() == R.id.btnLogin)
-        {
-            Intent intentLogin = new Intent(MainActivity.this,Homepage.class); //calls Homepage
-            startActivity(intentLogin);
-        }
-        else if(v.getId() == R.id.btnSignup)
-        {
-            Intent iSignup = new Intent(MainActivity.this,Signup.class); // calls sign up page
-            startActivity(iSignup);
-        }
-    }
-
 
     /**
      * This method retrieves the login user information from facebook and calls uppon the Homepage
@@ -162,7 +217,7 @@ public class MainActivity extends AppCompatActivity{
 
     /**
      * On activity result used for call back manager and to use sdk as a superclass for current
-     * activity puporse for facebook SDK.
+     * activity.
      * @param requestCode
      * @param resultCode
      * @param data
@@ -174,15 +229,5 @@ public class MainActivity extends AppCompatActivity{
         callbackManager.onActivityResult(requestCode, resultCode, data);
 
     }
-
-
-
-
-
-
-
-
-
-
 
 }
