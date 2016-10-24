@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity{
 
     /**
      * On activity result used for call back manager and to use sdk as a superclass for current
-     * activity.
+     * activity puporse for facebook SDK.
      * @param requestCode
      * @param resultCode
      * @param data
