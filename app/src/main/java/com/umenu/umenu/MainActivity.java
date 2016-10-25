@@ -25,8 +25,18 @@ import java.util.List;
 import static com.umenu.umenu.R.id.login_button;
 
 public class MainActivity extends AppCompatActivity {
+    /**
+     * EditTex Variable to get the username and password a
+     */
+
     EditText etUsername, etPassword;
+    /**
+     * String Variable to get the username and password in string format
+     */
     String username,password;
+    /**
+     * creating an object of LocalDatabase class
+     */
     LocalDatabase localDatabase;
 
     CallbackManager callbackManager;
@@ -63,14 +73,12 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        /**
-         * This log in and sign up buttons are for our own databse, for people not logging
-         * in using facebook or other social media, and want to create their own user profile using
-         * our databse.
-         * @param v
-         */
-
-
+    /**
+     * This login and sign up buttons are for our own databse, for people not logging
+     * in using facebook or other social media, and want to create their own user profile using
+     * our databse.
+     * @param v
+     */
     public void onSignupClick(View v)
     {
         Intent intent = new Intent(MainActivity.this,Register.class);
