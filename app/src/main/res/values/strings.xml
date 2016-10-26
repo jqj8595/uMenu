@@ -38,6 +38,7 @@
     <string name="feedBackValue">Value</string>
     <string name="feedBackMenu">Menu</string>
 
+    //for login activity
     <string name="txtUserName">Username</string>
     <string name="txtPassword">Password</string>
     <string name="inputUserName">eg.JohnSmith</string>
@@ -47,10 +48,8 @@
 
     //strings for Register.xml -> Register form
     <string name="registerFormTitle">Create your uMenu account</string>
-    <string name="txtFirstName">First Name</string>
-    <string name="txtLastName">Last Name</string>
-    <string name="txtInputFirstName">eg.John</string>
-    <string name="txtInputLastName">eg.Smith</string>
+    <string name="txtUsername">JohnSmith</string>
+    <string name="txtInputUsername">eg.John</string>
 
 
     <string name="txtEmail">Email</string>
@@ -61,8 +60,15 @@
     <string name="btnDone">Done </string>
 
     //homepage
-
     <string name="txtWelcome">Welcome to uMenu</string>
+
+
+    //facebook
+
+    <string name="facebook_app_id">1584903135149355</string>
+
+    <string name="action_settings">action_settings</string>
+    <string name="facebook_name">Username</string>
 
 
 </resources>

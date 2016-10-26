@@ -1,27 +1,64 @@
 package com.umenu.umenu;
 
+
 /**
  * Created by nishanjayetileke on 11/10/16.
  */
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.design.widget.NavigationView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.umenu.umenu.MenuPackage.MenuMain;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookSdk;
+import com.facebook.share.ShareApi;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.model.SharePhoto;
+import com.facebook.share.model.SharePhotoContent;
+import com.facebook.share.widget.ShareDialog;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.appindexing.Thing;
+import com.google.android.gms.common.api.GoogleApiClient;
 
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
-public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
+public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
     //time out for splash screen at the start of the app
     public static int timeout = 4000;
@@ -29,46 +66,81 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
     //instances created for unit testing purposes
     public boolean testing = false;
     public boolean result = false;
-
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
+    public JSONObject response, profile_pic_data, profile_pic_url;
+    public TextView user_name, user_email;
+    public ImageView user_picture;
+    public NavigationView navigation_view;
+    public CallbackManager callbackManager;
+    public ShareDialog shareDialog;
+    public int REQUEST_CAMERA =0, SELECT_FILE =1;
 
 
     //main running method that is automatically calls during runtime of the application
     @Override
     synchronized protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        facebookSDKInitialize();
         setContentView(R.layout.activity_homepage);
+        Intent intent = getIntent();
+        callbackManager = CallbackManager.Factory.create();
 
 
+
+
+        String jsondata = intent.getStringExtra("jsondata");
+
+
+        //test_hashKey(); //made for unit testing function
 
         //object menu buttons declared as instances to be used with event handler and to build on
         //functionality.
         Button menu;
-
         ImageButton setting;
         ImageButton share;
+        ImageButton fbshare;
+        fbshare = (ImageButton) findViewById(R.id.fbimagebutton);
+        shareDialog = new ShareDialog(this);
 
+        fbshare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (ShareDialog.canShow(ShareLinkContent.class)) {
+                    ShareLinkContent linkContent = new ShareLinkContent.Builder()
+                            .setContentTitle("uMenu is awesome Jason, Nishan and Sam should get A+")
+                            .setImageUrl(Uri.parse("https://i.ytimg.com/vi/EYGOf56ux2o/0.jpg?time=1454060557625"))
+                            .setContentDescription(
+                                    "Having a great time at this restaurant")
+                            .setContentUrl(Uri.parse("http://www.delaroystudios.com/channel/android-development/how-to-develop-an-android-camera-and-video-app/#.Vqsd0iorK00"))
+                            .build();
+
+                    shareDialog.show(linkContent);  // Show facebook ShareDialog
+
+                }
+            }
+
+
+        });
 
 
 
 
         //connecting the buttons with the xml id created with each button
-        menu =  (Button)findViewById(R.id.btnMenu);
-        setting = (ImageButton)findViewById(R.id.settings);
+        menu = (Button) findViewById(R.id.btnMenu);
+        setting = (ImageButton) findViewById(R.id.settings);
         share = (ImageButton) findViewById(R.id.share);
         menu.setTransformationMethod(null);
 
 
-
-
-
-
-
-
-
         //following method calls are for
-        share.setOnClickListener(new View.OnClickListener(){
+        share.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
 
                 //Toasts are created as testing function to allow the developers know if it is
                 //working. Toasts functions are not part of the application functionality.
@@ -80,60 +152,62 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
                 inflater2.inflate(R.menu.menu_share, popup_share.getMenu());
                 popup_share.show();
                 setForceShowIcon(popup_share);
-
-
-
             }
-
         });
 
-
         //setting button click listener activates when setting button is pushed during runtime.
-
-        setting.setOnClickListener(new View.OnClickListener(){
+        setting.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-
+            public void onClick(View v) {
                 //takes user to setting activity defined in other java classes under the manifest
                 Intent setting_page = new Intent(Homepage.this, Setting_activity.class);
                 startActivity(setting_page);
                 testing = true;
             }
         });
-
-
         //menu clickjing method
-        menu.setOnClickListener(new View.OnClickListener(){
+        menu.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-
+            public void onClick(View v) {
                 //Main menu selection pane using pop up menu selection style for use
                 //throughout the whole app.
-
                 PopupMenu popup = new PopupMenu(Homepage.this, v);
                 MenuInflater inflater = popup.getMenuInflater();
                 inflater.inflate(R.menu.menu, popup.getMenu());
                 popup.show();
                 setForceShowIcon(popup);
 
+
             }
         });
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
     }
 
 
 
-    //method call to act as a on click listener for popup menu
+    /**
+     * method initializes facebook sdk and creates object for callbackmanager.
+     */
+    private void facebookSDKInitialize() {
+        FacebookSdk.sdkInitialize(getApplicationContext());
+    }
 
+
+    //method call to act as a on click listener for popup menu
     @Override
     public boolean onMenuItemClick(MenuItem item) {
 
         return false;
+
     }
 
 
     //method call for inflation of the popup menu to be activated.
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
 
@@ -141,22 +215,174 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
     }
 
 
+    /**
+     * When selecting the image you want from your device it gives you the choice to take
+     * the photo from your device camera or choose from the library stored pictures.
+     * it then sends it for uploading to facebook servers.
+     */
+    private void selectImage(){
+        final CharSequence[] items = {"Take Photo", "Choose from Library", "Cancel"};
+        //choice is made through a char sequence which is the onscreen popup menu that appears.
+        AlertDialog.Builder builder = new AlertDialog.Builder(Homepage.this);
+        builder.setTitle("Select Profile Photo!");
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+                if(items[item].equals("Take Photo")){
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, REQUEST_CAMERA);
+
+
+                }
+                else if (items[item].equals("Choose from Library")){
+                    Intent intent = new Intent(
+                            Intent.ACTION_PICK,
+                            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    intent.setType("image/*");
+                    startActivityForResult(
+                            Intent.createChooser(intent, "Select File"), SELECT_FILE);
+                }
+                else if(items[item].equals("Cancel")){
+                    dialog.dismiss();;
+                }
+            }
+        });
+        builder.show();
+    }
 
 
 
-    //selection commands from the main popup menu
+    /**
+     * On activity result needed as a super class for facebook to be initialized
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+
+
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
+    protected void onActivityResult(final int requestCode, final int resultCode, final Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == Activity.RESULT_OK){
+            if(requestCode == SELECT_FILE)
+                onSelectFromGalleryResult(data);
+            else if (requestCode == REQUEST_CAMERA){
+                onCaptureImageResult(data);
+            }
+
+        }
+
+
+    }
+
+    /**
+     * select photo from gallery and convert it to the right size and format for facebook
+     * takes in the intent data and
+     * @param data
+     */
+    private void onSelectFromGalleryResult(Intent data){
+        Uri selectedImageUri = data.getData();
+        String[] projection = {MediaStore.MediaColumns.DATA};
+        Cursor cursor = managedQuery(selectedImageUri, projection, null, null, null);
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA);
+        cursor.moveToFirst();
+
+        String selectedImagePath = cursor.getString(column_index);
+        Bitmap thumbnail;
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(selectedImagePath, options);
+        final int Required_Size = 200;
+        int scale =1;
+        while(options.outWidth/scale/2>=Required_Size &&
+                options.outHeight/scale/ 2>= Required_Size){
+            scale *=2;
+            options.inSampleSize = scale;
+            options.inJustDecodeBounds = false;
+            thumbnail = BitmapFactory.decodeFile(selectedImagePath, options);
+            sharePhotoToFacebook(thumbnail);
+        }
+    }
+
+
+    /**
+     * take a photo and activate the camera on the device to upload photo
+     * to facebook profile.
+     * @param data
+     */
+
+    private void onCaptureImageResult(Intent data){
+        Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        thumbnail.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
+
+        File destination = new File(Environment.getExternalStorageDirectory(),
+                System.currentTimeMillis() + ".jpg");
+
+        FileOutputStream fo;
+        try{
+            destination.createNewFile();
+            fo = new FileOutputStream(destination);
+            fo.write(bytes.toByteArray());
+            fo.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        sharePhotoToFacebook(thumbnail);
+
+
+    }
+
+
+    /**
+     * Method shares directly to facebook servers as a Bitmap and sends a toast to the app
+     * letting the user know their photo has been uploaded successfully.
+     * @param imagePath
+     */
+
+    private void sharePhotoToFacebook(Bitmap imagePath) {
+
+        SharePhoto photo = new SharePhoto.Builder()
+                .setBitmap(imagePath)
+                .setCaption("Nice Place.....")
+                .build();
+
+        SharePhotoContent content = new SharePhotoContent.Builder()
+                .addPhoto(photo)
+                .build();
+
+        shareDialog.show(content);
+
+        ShareApi.share(content, null);
+        testing_if_sharing_successful();
+
+        Toast.makeText(Homepage.this, "Facebook Photo Upload Completed", Toast.LENGTH_LONG).show();
+
+    }
+
+
+    /**
+     * selection commands from the main popup menu, the popup menu for the main menu returns a
+     * boolean. Has cases for each item selected on the menu for the user and calls the required
+     * intents.
+     * @param item
+     * @return boolean
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
         //using switch to handle menu selections
-        switch(id){
+        switch (id) {
 
             case R.id.Restaurants:
-
-                result =true;
                 testing_menuWorks_NewActivity(result);
-
+                result = true;
                 break;
 
             case R.id.NearBy:
@@ -185,10 +411,7 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
 
                 //case 4 order now button get fast access to the ordering page
 
-                Intent menuMain = new Intent(Homepage.this, MenuMain.class);
-                startActivity(menuMain);
-
-                result =true;
+                result = true;
                 testing_menuWorks_NewActivity(result);
 
                 break;
@@ -198,7 +421,7 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
 
                 //case 5 check for dinner places from the main screen.
 
-                result =true;
+                result = true;
                 testing_menuWorks_NewActivity(result);
 
                 break;
@@ -207,7 +430,7 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
 
                 //case 6 check for lunch places from the main screen.
 
-                result =true;
+                result = true;
                 testing_menuWorks_NewActivity(result);
 
                 break;
@@ -217,19 +440,23 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
 
                 //case 7 checks for breakfast places from the main screen.
 
-                result =true;
+                result = true;
                 testing_menuWorks_NewActivity(result);
 
                 break;
 
             case R.id.Facebook:
-                result =true;
-                testing_menuWorks_NewActivity(result);
+                result = true;
+                shareDialog = new ShareDialog(this);
+                selectImage();
+
+
+
                 break;
 
 
             case R.id.Twitter:
-                result =true;
+                result = true;
                 testing_menuWorks_NewActivity(result);
                 break;
 
@@ -238,7 +465,6 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
                 result = true;
                 testing_menuWorks_NewActivity(result);
                 break;
-
 
 
             default:
@@ -250,8 +476,8 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
         return super.onOptionsItemSelected(item);
 
 
-
     }
+
 
 
 
@@ -296,67 +522,120 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
     }
 
 
-
     //unit test method for selection in popup menu for faster display
-    public void testing_menuWorks_NewActivity(boolean selection){
-        if(selection ){
+    public void testing_menuWorks_NewActivity(boolean selection) {
+        if (selection) {
             Toast.makeText(getBaseContext(), "Function working", Toast.LENGTH_SHORT).show();
-        }
-        else
+        } else
             Toast.makeText(getBaseContext(), "Function not working", Toast.LENGTH_SHORT).show();
-
-
-
-
     }
 
     //unit tests to check if other buttons on the menu are functional
-    public void menuclick(View v)
-    {
+    public void menuclick(View v) {
 
-        Toast.makeText(getBaseContext(), " menu button is responsive", Toast.LENGTH_LONG) .show();
+        Toast.makeText(getBaseContext(), " menu button is responsive", Toast.LENGTH_LONG).show();
 
     }
 
     //Unit tests method for search button to check if working using toasts
-    public void searchClicked(View v){
+    public void searchClicked(View v) {
 
-        Toast.makeText(getBaseContext(), "search button is responsive", Toast.LENGTH_LONG) .show();
+        Toast.makeText(getBaseContext(), "search button is responsive", Toast.LENGTH_LONG).show();
     }
 
     //Unit tests method for setting button to check if setting button works using toasts
 
-    public void settingClicked(View v){
+    public void settingClicked(View v) {
 
-        Toast.makeText(getBaseContext(), "setting button is responsive", Toast.LENGTH_LONG) .show();
+        Toast.makeText(getBaseContext(), "setting button is responsive", Toast.LENGTH_LONG).show();
 
 
     }
 
 
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    public Action getIndexApiAction() {
+        Thing object = new Thing.Builder()
+                .setName("Homepage Page") // TODO: Define a title for the content shown.
+                // TODO: Make sure this auto-generated URL is correct.
+                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
+                .build();
+        return new Action.Builder(Action.TYPE_VIEW)
+                .setObject(object)
+                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
+                .build();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        AppIndex.AppIndexApi.start(client, getIndexApiAction());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        AppIndex.AppIndexApi.end(client, getIndexApiAction());
+        client.disconnect();
+    }
+
+
+    //Unit testing out puts to logcat if sharing  to facebook is successful.
+    public void testing_if_sharing_successful(){
+        Log.e("Sharing","Successful");
+    }
+
 
     //Unit tests to check if button is pushed or not during runtime
     //personal test method used while building the application.
-    public boolean test_if_button_pushed(){
+    public boolean test_if_button_pushed() {
         boolean value = false;
+        value = testing;
 
         if(!testing){
-            value = false;
-        }
-        else{
-            value = true;
+            value = testing;
         }
 
+        else{
+            value = testing;
+        }
         return value;
 
     }
 
 
+    /**
+     * Unit Tests: if the hash key matches the online hash key from facebook developers site.
+     * It troubleshoots if the sdk is having problems running.
+     * prints to the logcat in android studio to show the output we are getting from facebook.
+     * @param popupMenu
+     */
+    public void test_hashKey(){
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(
+                    "com.facebook.samples.hellofacebook",
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
 
+        } catch (NoSuchAlgorithmException e) {
 
-
-
-
+        }
+    }
 
 
 

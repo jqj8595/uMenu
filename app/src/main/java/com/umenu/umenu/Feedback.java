@@ -23,7 +23,6 @@ public class Feedback extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
-
         //feedbackFilePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/uMenu/FeedBack/";
 
         service1 = (CheckBox) findViewById(R.id.checkbox_serviceGood);
