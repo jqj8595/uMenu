@@ -59,10 +59,8 @@
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".MenuPackage.MenuMain" />
-        <activity android:name=".MenuPackage.MenuBreakfast" />
-        <activity android:name=".MenuPackage.MenuLunch" />
-        <activity android:name=".MenuPackage.MenuDinner" />
-        <activity android:name=".MenuPackage.MenuDrinks"></activity>
+        <activity android:name=".MenuPackage.MenuSelectionGeneric" />
+        <activity android:name=".MenuPackage.MenuEditOrder"></activity>
     </application>
 
 </manifest>

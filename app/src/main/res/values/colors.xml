@@ -4,6 +4,12 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="lightBlue">#68A6F5</color>
+    <color name="orange">#ff9900</color>
+        <!-- 30% light -->
+    <color name="background_30">#811818</color>
+        <!-- 20% light -->
+    <color name="background_20">#561010</color>
     <!-- Colour for the background across all activities -->
+        <!-- Background color at about 16% light -->
     <color name="background">#460d0d</color>
 </resources>

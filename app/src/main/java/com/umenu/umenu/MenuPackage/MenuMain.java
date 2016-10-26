@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.umenu.umenu.R;
 
+import java.util.ArrayList;
+
 public class MenuMain extends AppCompatActivity implements View.OnClickListener {
 
     @Override
@@ -35,19 +37,46 @@ public class MenuMain extends AppCompatActivity implements View.OnClickListener 
     //Takes the user to the desired activity
     public void onClick(View v) {
         Intent nextActivity;
+        Menu menu;
         switch (v.getId()) {
+            //Inside the singleton class Menu is a variable held for setting up the next activity.
+            //This is set with an enum inside Menu so as to limit confusion.
+            //The idea is to limit the amount of classes needing to be coded and ensure uniformity
+            //  among the various menus, by having one class with the framework for how to layout
+            //  the activity.
             case R.id.menuMainChoiceBreakfast:
-                nextActivity = new Intent(MenuMain.this, MenuBreakfast.class);
+                //Create singleton Menu if not already created and pass back
+                //Constructor for it will not create new one if one exists
+                menu = Menu.getInstance();
+                //Set the value that represents the next activity that was chosen
+                menu.menuSelected = Menu.menuChoice.BREAK_FAST.getChoice();
+                //Intent stuff
+                nextActivity = new Intent(MenuMain.this, MenuSelectionGeneric.class);
+                //Start activity. The next activity will pull from  the singleton that is Menu
+                //  an int stored in Menu.menuSelected which sets the content for the class
+                //  MenuSelectionGeneric
                 startActivity(nextActivity);
                 break;
             case R.id.menuMainChoiceLunch:
+                menu = Menu.getInstance();
+                menu.menuSelected = Menu.menuChoice.LUNCH.getChoice();
 
+                nextActivity = new Intent(MenuMain.this, MenuSelectionGeneric.class);
+                startActivity(nextActivity);
                 break;
             case R.id.menuMainChoiceDinner:
+                menu = Menu.getInstance();
+                menu.menuSelected = Menu.menuChoice.DINNER.getChoice();
 
+                nextActivity = new Intent(MenuMain.this, MenuSelectionGeneric.class);
+                startActivity(nextActivity);
                 break;
             case R.id.menuMainChoiceDrinks:
+                menu = Menu.getInstance();
+                menu.menuSelected = Menu.menuChoice.DRINKS.getChoice();
 
+                nextActivity = new Intent(MenuMain.this, MenuSelectionGeneric.class);
+                startActivity(nextActivity);
                 break;
         }
     }

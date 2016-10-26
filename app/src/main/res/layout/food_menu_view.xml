@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:text="Food Name Goes here"
+        android:id="@+id/foodName"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/cast_album_art_placeholder"
+        android:layout_below="@+id/foodName"
+        android:layout_alignParentLeft="true"
+        android:maxWidth="60sp"
+        android:maxHeight="60sp"
+        android:minHeight="40sp"
+        android:minWidth="40sp"
+        android:adjustViewBounds="true"
+        android:id="@+id/foodImage"/>
+
+    <TextView
+        android:text="Price:\n$"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/foodName"
+        android:layout_toRightOf="@+id/foodImage"
+        android:id="@+id/foodPrice"/>
+
+    <TextView
+        android:text="Description of the food item goes here. Blah BLah blah"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/foodImage"
+        android:id="@+id/foodDescription" />
+</RelativeLayout>

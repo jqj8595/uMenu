@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_menu_selection_generic"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.umenu.umenu.MenuPackage.MenuSelectionGeneric">
+    <!-- Title -->
+    <TextView
+        android:text="Generic Menu"
+        style="@style/menuTitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/foodName" />
+
+    <!-- Show selected item -->
+    <TextView
+        android:text="Food Choice: \nNothing Selected"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/menuAddButton"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/menuAddButton"
+        android:id="@+id/selectionToAdd"
+        android:layout_alignBottom="@+id/menuAddButton" />
+
+    <!-- ListView that contains food items -->
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/menuListView"
+        android:layout_above="@+id/MenuMidDivider"
+        android:layout_below="@+id/menuPlaceOrder" />
+    <!-- Divider 3(Bottom) -->
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3dip"
+        android:background="#000000"
+        android:id="@+id/menuLowerDivider"
+        android:layout_alignTop="@+id/menuViewOrder"
+        android:layout_alignParentLeft="true" />
+
+    <!-- Add item to order button -->
+    <Button
+        android:text="Add To Order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/menuAddButton"
+        android:layout_above="@+id/menuViewOrder"
+        android:layout_alignParentRight="true" />
+    <!-- Divider 2(Middle) -->
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3dip"
+        android:background="#000000"
+        android:id="@+id/MenuMidDivider"
+        android:layout_above="@+id/selectionToAdd"
+        android:layout_alignParentLeft="true" />
+
+    <!-- Remove Item Button -->
+    <Button
+        android:text="Remove Item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/menuDeleteItem"
+        android:layout_below="@+id/menuAddButton"
+        android:layout_toRightOf="@+id/selectionToAdd"
+        android:layout_alignParentRight="true" />
+    <!-- View Order Button -->
+    <Button
+        android:text="View Order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/menuViewOrder"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true" />
+
+    <!-- Place OrderButton -->
+    <Button
+        android:text="Place Order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/menuPlaceOrder" />
+
+    <!-- Divider 1(Top) -->
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3dip"
+        android:background="#000000"
+        android:id="@+id/MenuUpperDivider"
+        android:layout_alignBottom="@+id/menuPlaceOrder"
+        android:layout_alignParentLeft="true" />
+
+</RelativeLayout>

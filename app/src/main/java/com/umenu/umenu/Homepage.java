@@ -16,6 +16,8 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import com.umenu.umenu.MenuPackage.MenuMain;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -182,6 +184,9 @@ public class Homepage extends AppCompatActivity implements PopupMenu.OnMenuItemC
             case R.id.OrderNow:
 
                 //case 4 order now button get fast access to the ordering page
+
+                Intent menuMain = new Intent(Homepage.this, MenuMain.class);
+                startActivity(menuMain);
 
                 result =true;
                 testing_menuWorks_NewActivity(result);

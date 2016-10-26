@@ -25,13 +25,22 @@
 
     <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <!-- For use with the food menu page for choosing type of menu -->
-    <style name="menuMainChoices" >
-        <item name="android:textColor">@color/lightBlue</item>
-        <item name="android:textSize">25sp</item>
-    </style>
+
 
     <style name="activitySummary">
         <item name="android:textSize">20sp</item>
     </style>
+
+<!-- The Following were setup for Jason's activities -->
+<!-- For use with the food menu. Maybe others also - Jason -->
+    <style name="menuTitleStyle">
+        <item name ="android:textSize">40sp</item>
+        <item name ="android:textAppearance">?android:attr/textAppearanceLarge</item>
+    </style>
+    <style name="menuMainChoices" >
+        <item name="android:textColor">@color/orange</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+
+<!-- End -->
 </resources>
