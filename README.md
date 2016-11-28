@@ -2,6 +2,7 @@
 
 ![alt tag](https://cloud.githubusercontent.com/assets/20781377/20653238/28c1f52c-b56f-11e6-974f-4002331428fc.png)
 
+# Description
 Restaurant Application - An innovative and intuitive restaurant app to streamline client-staff interaction
 
 Upon downloading the app on your device from android playstore, the app is only compatiable with andrioid devices running android 6 marshmellow 
@@ -26,9 +27,9 @@ give you a unique feeling using our services.
 
 We hope you enjoy using Umenu.
 
-System requirements:
+# System requirements:
 Only avaialble on android devices with access to Internet.
 
-Android 6: Marshmellow API 19 or Higher
+Android 6: Marshmellow API 21 or Higher
 
 
