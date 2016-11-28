@@ -7,7 +7,7 @@ Restaurant Application - An innovative and intuitive restaurant app to streamlin
 
 Upon downloading the app on your device from android playstore, the app is only compatiable with andrioid devices running android 6 marshmellow 
 API 21 or higher.
-It uses location services and google play servces, and therefore your location services must be switched on before running Umenu.
+It uses location services and google play servces to locate nearby restaurants close to you, and therefore your location services must be switched on before running Umenu.
 Umenu does not share automatically to facebook and only shares information you allow it.
 Umenu respects your privacy and does not share your information to any other outside source, it is only shared between our database and you.
 Umenu allows access to stored information such as photos and videos from your device for the purposes of sharing to social media 
