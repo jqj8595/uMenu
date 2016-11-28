@@ -1,5 +1,7 @@
-![alt tag](https://cloud.githubusercontent.com/assets/20781377/20653238/28c1f52c-b56f-11e6-974f-4002331428fc.png)
 # uMenu
+
+![alt tag](https://cloud.githubusercontent.com/assets/20781377/20653238/28c1f52c-b56f-11e6-974f-4002331428fc.png)
+
 Restaurant Application - An innovative and intuitive restaurant app to streamline client-staff interaction
 
 Upon downloading the app on your device from android playstore, the app is only compatiable with andrioid devices running android 6 marshmellow 
